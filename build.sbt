@@ -12,9 +12,10 @@ lazy val root = (project in file(".")).settings(
     )
   },
   publishTo := {
-    val centralSnapshots = "https://central.sonatype.com/repository/maven-snapshots/"
-    if (isSnapshot.value) Some("central-snapshots" at centralSnapshots)
-    else localStaging.value
+    if (isSnapshot.value)
+      None
+    else
+      localStaging.value
   },
   publishMavenStyle := true,
   pomIncludeRepository := { x => false },
